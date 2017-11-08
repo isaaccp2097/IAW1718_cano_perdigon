@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>practica 1</title>
   </head>
   <body>
-      <?php
-        echo "<h3>Mostrado del resultado del formulario desde postejemplo2.php a aqui</h3>";
-        var_dump($_POST);
-      ?>
+
+
+    <form action="editar_alumnos.php" method="post">
+      <fieldset>
+        <legend>Editar alumnos</legend>
+
+
+     <?php
+        if(isset($_GET["nombre"])) {
+          $var=($_GET["nombre"]);
+          echo "<span>Nombre :</span><input type='text' name='nombre' value='$var' required><br>";
+          $v=($_GET["apellido"]);
+          echo "<span>Apellido :</span><input type='text' name='apellido' value='$v' required><br>";
+          $v=($_GET["correo"]);
+          echo "<span>Correo :</span><input type='mail' name='correo' value='$v' required><br>";
+        }
+     ?>
+        <p><input type="submit" value="Send" ></p>
+      </fieldset>
+    </form>
+
   </body>
 </html>

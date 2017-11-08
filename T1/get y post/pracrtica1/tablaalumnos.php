@@ -31,21 +31,21 @@
           </tr>
           <tr>
             <td name="nombre">Isaac</td>
-            <td name="apellidos">Cano Perdigon</td>
+            <td name="apellido">Cano</td>
             <td name="correo">isaac@hola.es</td>
-            <td><a href="editar_alumnos.php?nombre=Isaac?apellidos=Cano?correo=isaac@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
+            <td><a href="editar_alumnos.php?nombre=Isaac&apellido=Cano&correo=isaac@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
           </tr>
           <tr>
             <td name="nombre">Samuel</td>
-            <td name="apellidos">Cano Perdigon</td>
+            <td name="apellido">Cano</td>
             <td name="correo">samuel@hola.es</td>
-            <td><a href="editar_alumnos.php?nombre=Paco?apellidos=Cano?correo=samuel@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
+            <td><a href="editar_alumnos.php?nombre=Samuel&apellido=Cano&correo=samuel@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
           </tr>
           <tr>
             <td name="nombre">Paco</td>
-            <td name="apellidos">Rincon Gonzalez</td>
+            <td name="apellido">Rincon</td>
             <td name="correo">paco@hola.es</td>
-            <td><a href="editar_alumnos.php?nombre=Paco?apellidos=Rincon?correo=paco@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
+            <td><a href="editar_alumnos.php?nombre=Paco&apellido=Rincon&correo=paco@hola.es"><img src="lapiz.jpeg" alt=""> </a></td>
           </tr>
 
         </table>
