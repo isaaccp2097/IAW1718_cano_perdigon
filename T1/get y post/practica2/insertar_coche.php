@@ -20,10 +20,19 @@
     </form>
     <?php
       if(isset($_POST["matricula"])) {
-        echo "<a href='ficha_coche.php?matricula=".$_POST['matricula']."&kilometro=".$_POST['kilometro']."&fecha_mat=".$_POST['fecha_mat']."&marca=".$_POST['marca']."&modelo=".$_POST['modelo']."'>Coche insertado</a>";
+        echo "<a href='ficha_coche.php?".
+        "matricula=".$_POST['matricula'].
+        "&kilometro=".$_POST['kilometro'].
+        "&fecha_mat=".$_POST['fecha_mat'].
+        "&marca=".$_POST['marca'].
+        "&modelo=".$_POST['modelo'].
+        "'>Coche insertado</a>";
 
       }
-
+      else {
+        echo "No estan los campos rellenos";
+      }
+      
      ?>
 
 
