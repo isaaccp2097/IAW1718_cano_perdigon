@@ -14,7 +14,27 @@
         <span>Modelo: </span><input type="text" name="modelo" ><br>
         <span>Color: </span><input type="text" name="color" ><br>
         <span>Fecha de Matriculacion: </span><input type="date" name="fechamatriculacion" ><br>
-        <span>CodCliente: </span><input type="text" name="codcliente" >
+        <span>CodCliente: </span>
+        <?php
+
+              $connection = new mysqli('192.168.1.53', 'root', 'Admin2015', 'tf', '3316');
+
+              $connection->set_charset("utf8");
+
+
+              if ($connection->connect_errno) {
+                  printf("Connection failed: %s\n", $connection->connect_error);
+                  exit();
+              }
+              $query="SELECT DNI, Apellidos, Nombre from CLIENTES order by Apellidos;";
+
+              if ($result = $connection->query($query)){
+              echo "<select><option value='".$obj->CodCliente."'>";
+              echo $obj->Apellidos.",",$obj->Nombre;
+              echo "</option></select>";
+            }
+        ?>
+
 
         <p><input type="submit" value="Send"></p>
       </fieldset>
