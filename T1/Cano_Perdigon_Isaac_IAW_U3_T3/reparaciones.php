@@ -63,7 +63,7 @@
                   echo "<td>".$obj->Observaciones."</td>";
                   echo "<td><a href='borrar.php?clave=".$obj->IdReparacion."'><img src='x.png'></a>
                   <a href='asignar.php?clave=".$obj->IdReparacion."'><img src='a.jpg'></a>
-                  <a href='borrar.php?clave=".$obj->IdReparacion."'><img src='o.png'></a></td>";
+                  <a href='informe.php?clave=".$obj->IdReparacion."'><img src='o.png'></a></td>";
                   echo "</tr>";
 
 

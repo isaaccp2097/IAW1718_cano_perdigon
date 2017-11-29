@@ -7,10 +7,6 @@
   <body>
 
 
-    piezas
-    empleados
-
-
         <?php
 
               $connection = new mysqli('192.168.1.53', 'root', 'Admin2015', 'tf', '3316');
@@ -23,46 +19,25 @@
                   exit();
               }
 
-              $query="SELECT * from REPARACIONES";
+              $query="SELECT r.Descripcion from REPARACIONES rep
+              join Incluyen i on rep.IdReparacion=i.IdReparacion
+              join RECAMBIOS r on i.IdRecambio=r.IdRecambio
+              where rep.IdReparacion=$_GET[clave]";
 
               if ($result = $connection->query($query)) {
 
-                printf("<p>The select query returned %d rows.</p>", $result->num_rows);
+
 
                 ?>
-
-                <table style="border:1px solid black">
-                  <thead>
-                    <tr>
-                      <th>Id reparacion</th>
-                      <th>Matricula</th>
-                      <th>Fecha entrada</th>
-                      <th>Km</th>
-                      <th>Avería</th>
-                      <th>Fecha Salida</th>
-                      <th>Reparado</th>
-                      <th>Observaciones</th>
-                      <th>Herramientas</th>
-                    </thead>
                 <?php
 
 
-
+                    echo "<h3>Piezas usadas en la reparacion</h3>";
                     while($obj = $result->fetch_object()) {
 
-                      echo "<tr>";
-                      echo "<td>".$obj->IdReparacion."</td>";
-                      echo "<td>".$obj->Matricula."</td>";
-                      echo "<td>".$obj->FechaEntrada."</td>";
-                      echo "<td>".$obj->Km."</td>";
-                      echo "<td>".$obj->Avería."</td>";
-                      echo "<td>".$obj->FechaSalida."</td>";
-                      echo "<td>".$obj->Reparado."</td>";
-                      echo "<td>".$obj->Observaciones."</td>";
-                      echo "<td><a href='borrar.php?clave=".$obj->IdReparacion."'><img src='x.png'></a>
-                      <a href='asignar.php?clave=".$obj->IdReparacion."'><img src='a.jpg'></a>
-                      <a href='borrar.php?clave=".$obj->IdReparacion."'><img src='o.png'></a></td>";
-                      echo "</tr>";
+                      echo "<ul>";
+                      echo "<li>".$obj->Descripcion."</li>";
+                      echo "</ul>";
 
 
                     }
@@ -72,5 +47,46 @@
                   }
 
             ?>
+
+            <?php
+
+                  $connection = new mysqli('192.168.1.53', 'root', 'Admin2015', 'tf', '3316');
+
+                  $connection->set_charset("utf8");
+
+
+                  if ($connection->connect_errno) {
+                      printf("Connection failed: %s\n", $connection->connect_error);
+                      exit();
+                  }
+
+                  $query="SELECT e.Nombre from REPARACIONES rep
+                  join Intervienen i on rep.IdReparacion=i.IdReparacion
+                  join EMPLEADOS e on i.CodEmpleado=e.CodEmpleado
+                  where rep.IdReparacion=$_GET[clave]";
+
+                  if ($result = $connection->query($query)) {
+
+
+
+                    ?>
+                    <?php
+
+
+                        echo "<h3>Empleados que han intervenido en la reparacion</h3>";
+                        while($obj = $result->fetch_object()) {
+
+                          echo "<ul>";
+                          echo "<li>".$obj->Nombre."</li>";
+                          echo "</ul>";
+
+
+                        }
+                        $result->close();
+                        unset($obj);
+                        unset($connection);
+                      }
+
+                ?>
   </body>
 </html>
