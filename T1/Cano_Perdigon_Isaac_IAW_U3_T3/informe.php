@@ -19,10 +19,10 @@
                   exit();
               }
 
-              $query="SELECT r.Descripcion from REPARACIONES rep
+              $query="SELECT r.Descripcion, r.IdRecambio from REPARACIONES rep
               join Incluyen i on rep.IdReparacion=i.IdReparacion
               join RECAMBIOS r on i.IdRecambio=r.IdRecambio
-              where rep.IdReparacion=$_GET[clave]";
+              where rep.IdReparacion=$_GET[cc]";
 
               if ($result = $connection->query($query)) {
 
@@ -36,7 +36,7 @@
                     while($obj = $result->fetch_object()) {
 
                       echo "<ul>";
-                      echo "<li>".$obj->Descripcion."</li>";
+                      echo "<li>".$obj->Descripcion.",".$obj->IdRecambio."</li>";
                       echo "</ul>";
 
 
@@ -60,10 +60,10 @@
                       exit();
                   }
 
-                  $query="SELECT e.Nombre from REPARACIONES rep
+                  $query="SELECT e.Nombre, e.Apellidos from REPARACIONES rep
                   join Intervienen i on rep.IdReparacion=i.IdReparacion
                   join EMPLEADOS e on i.CodEmpleado=e.CodEmpleado
-                  where rep.IdReparacion=$_GET[clave]";
+                  where rep.IdReparacion=$_GET[cc]";
 
                   if ($result = $connection->query($query)) {
 
@@ -77,7 +77,7 @@
                         while($obj = $result->fetch_object()) {
 
                           echo "<ul>";
-                          echo "<li>".$obj->Nombre."</li>";
+                          echo "<li>".$obj->Nombre.",".$obj->Apellidos."</li>";
                           echo "</ul>";
 
 

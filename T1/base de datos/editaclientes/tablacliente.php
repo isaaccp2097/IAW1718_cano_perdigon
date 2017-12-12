@@ -1,13 +1,4 @@
-<!--
-    Author: Juan Diego Pérez @pekechis
-    E-mail: contact@jdperez.es
-    Description: Passing info using POST and HTML forms
-                 using the same file
-    Date: November 2015
-    Reference: http://www.w3schools.com/tags/tag_form.asp
-               http://www.w3schools.com/tags/tag_input.asp
-               http://php.net/manual/reserved.variables.post.php
--->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -24,9 +15,7 @@
   </head>
   <body>
 
-      <!-- PHP STRUCTURE FOR CONDITIONAL HTML -->
-      <!-- FIRST TIME. NO DATA IN THE POST (checking a required form field) -->
-      <!-- So we must show the form -->
+      
 
       <?php
 

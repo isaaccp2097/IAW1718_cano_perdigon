@@ -22,7 +22,7 @@
             exit();
         }
 
-        $query="DELETE from REPARACIONES WHERE IdReparacion=$_GET[clave]";
+        $query="DELETE from REPARACIONES WHERE IdReparacion=$_GET[cc]";
           if ($result = $connection->query($query)){
                 header('Location: reparaciones.php');
 
