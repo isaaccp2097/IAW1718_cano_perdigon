@@ -33,8 +33,8 @@
               ?>
               </td>
               <td><h3><input type='button' name='singin' value='sing in' id="in"></h3></td>
-              <td><h3><a href="login.php"><input type='button' name='login' value='log in' id="up" href="login.php">
-              </a></h3></td>
+              <td><a href="login.php"><button type="button" class="btn btn-success" ><h4>
+                LOG IN</h4></button></a></td>
             </tr>
           </table>
         </div>

@@ -11,8 +11,10 @@ body{
   margin-top: 2%;
 }
 #inicio{
-  
+  border: white 5px solid;
   background-color: black;
+  text-align: center;
+  align-items: center;
 }
 
 #nusu{
