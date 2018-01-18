@@ -10,17 +10,14 @@ body{
 #encabezado{
   margin-top: 2%;
 }
-#up{
-  margin-left: 20%;
-}
-#in{
-  margin-left: 83%;
-}
 #inicio{
-  border: white 5px solid;
+  
   background-color: black;
-  height: 10%;
 }
-#contenidomenu{
-  margin-left: 52%;
+
+#nusu{
+  color: white;
+}
+#boton{
+  height: 20%;
 }

@@ -1,36 +1,54 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
   <body>
-    <div class="container">
+     <div class="container">
       <div class="row" id="encabezado">
         <div class="col-md-4" id="logo">
-           <h1>¡HE ESTADO AQUI!</h1>
+            <a href="inicio.php"><h1>¡HE ESTADO AQUI!</h1></a>
         </div>
-        <div class="col-md-8" id="inicio">
-          <table>
-            <tr>
-              <td><h3><input type='button' name='singin' value='sing in' id="in"></h3></td>
-              <td><h3><a href="login.php"><input type='button' name='login' value='log in' id="up" href="login.php">
-              </a></h3></td>
-            </tr>
-          </table>
+        <div class="col-md-1" id="inicio">
+                <?php
+                if (isset($_SESSION["user"])) {
+                echo "<h4 id='nusu'>$_SESSION[user]</h4>";
+              } else {
+                session_destroy();
+                echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
+              }
+              ?>
+        </div>
+
+        <div class="col-md-4" id="inicio">
+        </div>
+        <div class="col-md-3" id="inicio">
+                <td><button type="button" class="btn btn-success"><a href="registrarse.php"><h4>
+                  SING IN</h4></a></button></td>
+                  <td><button type="button" class="btn btn-success" ><a href="login.php"><h4>
+                    LOG IN</h4></a></button></td>
+        </div>
+
         </div>
       </div>
       <div class="row" id="menu">
         <div class="col-md-12" id="inicio">
           <table>
             <tr>
-              <td><h3><input type='button' name='mapa' value='mapa' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='lugares' value='lugares' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='missitios' value='mis sitios' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='contactanos' value='log in' id="contenidomenu"></h3></td>
+              <td><button type="button" class="btn btn-success"><a href="mapa.php"><h4>Mapa
+              </h4></button></td>
+              <td><button type="button" class="btn btn-success"><a href="lugares.php"><h4>Lugares
+              </h4></button></td>
+              <td><button type="button" class="btn btn-success"><a href="missitios.php"><h4>Mis sitios
+              </h4></button></td>
+              <td><button type="button" class="btn btn-success"><a href="contactanos.php"><h4>Contactanos
+              </h4></button></td>
             </tr>
           </table>
         </div>
@@ -39,34 +57,16 @@
       <div class="row" id="login">
         <div class="col-md-3">
         </div>
-        <div class="col-md-2">
-          <?php
+        <div class="col-md-6">
+          <form action="login.php" method="post">
 
-           if (empty($_GET)) {
+            <p>Nombre: <input name="nusu" required></p>
+            <p>Contraseña: <input name="contrasena" type="password" required></p>
+            <p><input type="submit" value="Log In"></p>
 
-            echo "<form action='inicio.php' method='post'>";
-            echo "<fieldset>";
-            echo "<span>Nombre :</span><br>";
-            echo "<span>Contraseña :</span><br>";
-            echo "<p><input type='submit' value='Send'></p>";
-            echo "</fieldset>";
-            echo "</form>";
-           } else {
-             //If $_GET contains anything (probably coming from get_source.php)
-             //I dump the variable into the screen showing the content
-             echo "Name:".$_GET['name']."<br>";
-             echo "LastName:".$_GET['lastname']."<br";
-
-           }
-          ?>
+          </form>
         </div>
-        <div class="col-md-4">
-          <?php
-            echo "<input type='text' name='nombre' required><br>";
-            echo "<input type='text' name='contrasena' required><br>";
-            
-           ?>
-        </div>
+
         <div class="col-md-3">
         </div>
 
@@ -74,6 +74,47 @@
       </div>
 
     </div>
+
+
+
+    <?php
+
+        if (isset($_POST["nusu"])) {
+
+
+          $connection = new mysqli("192.168.1.53", "root", "Admin2015", "hea", 3316);
+
+
+          if ($connection->connect_errno) {
+              printf("Connection failed: %s\n", $connection->connect_error);
+              exit();
+          }
+
+
+          $consulta="select * from usuarios where
+          nusu='".$_POST["nusu"]."' and contrasena=md5('".$_POST["contrasena"]."');";
+
+
+
+          if ($result = $connection->query($consulta)) {
+
+
+              if ($result->num_rows===0) {
+                echo "USUARIO INCORRECTO";
+              } else {
+
+                $_SESSION["user"]=$_POST["nusu"];
+                $_SESSION["language"]="es";
+                echo "login correcto";
+                header("Location: inicio.php");
+              }
+
+          } else {
+            echo "Wrong Query";
+          }
+      }
+    ?>
+
 
   </body>
 </html>

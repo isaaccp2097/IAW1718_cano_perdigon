@@ -8,14 +8,30 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
+    <?php
+
+      //Open the session
+      session_start();
+
+     ?>
     <div class="container">
       <div class="row" id="encabezado">
-        <div class="col-md-4" id="logo">
+        <a href="inicio.php"><div class="col-md-4" id="logo">
            <h1>¡HE ESTADO AQUI!</h1>
-        </div>
+        </div></a>
         <div class="col-md-8" id="inicio">
           <table>
             <tr>
+              <td>
+                <?php
+                if (isset($_SESSION["user"])) {
+                echo "<h4 id='nusu'>$_SESSION[user]</h4>";
+              } else {
+                session_destroy();
+                echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
+              }
+              ?>
+              </td>
               <td><h3><input type='button' name='singin' value='sing in' id="in"></h3></td>
               <td><h3><a href="login.php"><input type='button' name='login' value='log in' id="up" href="login.php">
               </a></h3></td>
@@ -27,10 +43,10 @@
         <div class="col-md-12" id="inicio">
           <table>
             <tr>
-              <td><h3><input type='button' name='mapa' value='mapa' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='lugares' value='lugares' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='missitios' value='mis sitios' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='contactanos' value='log in' id="contenidomenu"></h3></td>
+              <td><h3><input type='button' name='mapa' value='Mapa' id="contenidomenu"></h3></td>
+              <td><h3><input type='button' name='lugares' value='Lugares' id="contenidomenu"></h3></td>
+              <td><h3><input type='button' name='missitios' value='Mis sitios' id="contenidomenu"></h3></td>
+              <td><h3><input type='button' name='contactanos' value='Contactanos' id="contenidomenu"></h3></td>
             </tr>
           </table>
         </div>
