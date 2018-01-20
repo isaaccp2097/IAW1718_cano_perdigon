@@ -13,8 +13,7 @@
      <div class="container">
       <div class="row" id="encabezado">
         <div class="col-md-4" id="logo">
-            <!--<a href="inicio.php"><h1>¡HE ESTADO AQUI!</h1></a>-->
-            <img src="../../img/prueba1.png" class="img-fluid" alt="Responsive image">
+            <a href="inicio.php"><img src="../../img/prueba1.png" class="img-fluid" alt="Responsive image"></a>
         </div>
         <div class="col-md-5" id="inicio">
                 <?php

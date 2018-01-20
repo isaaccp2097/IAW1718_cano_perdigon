@@ -5,14 +5,14 @@
 }
 
 body{
-  background-color: white;
+  background-color: black;
 }
 #encabezado{
   margin-top: 2%;
 }
 #inicio{
   border: white 5px solid;
-  background-color: black;
+  background-color: blue;
   text-align: center;
   align-items: center;
 }
@@ -22,4 +22,11 @@ body{
 }
 #boton{
   height: 20%;
+}
+#portada{
+  height: 150%;
+}
+#divportada{
+  align-items: center;
+  margin-left: 7%;
 }

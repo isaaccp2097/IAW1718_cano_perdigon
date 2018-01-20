@@ -1,28 +1,21 @@
+<?php
+  session_start();
+?>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-      <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/estilos.css" media="screen" title="no title">
+</head>
   <body>
-    <?php
-
-      //Open the session
-      session_start();
-
-     ?>
-    <div class="container">
+     <div class="container">
       <div class="row" id="encabezado">
-        <a href="inicio.php"><div class="col-md-4" id="logo">
-           <h1>¡HE ESTADO AQUI!</h1>
-        </div></a>
-        <div class="col-md-8" id="inicio">
-          <table>
-            <tr>
-              <td>
+        <div class="col-md-4" id="logo">
+            <a href="inicio.php"><img src="../../img/prueba1.png" class="img-fluid" alt="Responsive image"></a>
+        </div>
+        <div class="col-md-5" id="inicio">
                 <?php
                 if (isset($_SESSION["user"])) {
                 echo "<h4 id='nusu'>$_SESSION[user]</h4>";
@@ -31,26 +24,40 @@
                 echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
               }
               ?>
-              </td>
-              <td><h3><input type='button' name='singin' value='sing in' id="in"></h3></td>
-              <td><a href="login.php"><button type="button" class="btn btn-success" ><h4>
-                LOG IN</h4></button></a></td>
-            </tr>
-          </table>
         </div>
+
+
+        <div class="col-md-3" id="inicio">
+            <td><button type="button" class="btn btn-success"><a href="registrarse.php">
+            SING IN</a></button></td>
+            <td><a href="login.php"><button type="button" class="btn btn-success" >
+            LOG IN</button></a></td>
+        </div>
+
       </div>
       <div class="row" id="menu">
-        <div class="col-md-12" id="inicio">
-          <table>
-            <tr>
-              <td><h3><input type='button' name='mapa' value='Mapa' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='lugares' value='Lugares' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='missitios' value='Mis sitios' id="contenidomenu"></h3></td>
-              <td><h3><input type='button' name='contactanos' value='Contactanos' id="contenidomenu"></h3></td>
-            </tr>
-          </table>
+        <div class="col-md-3" id="inicio">
+              <button type="button" class="btn btn-success"><a href="mapa.php"><h4>Mapa
+              </h4></a></button>
+        </div>
+        <div class="col-md-3" id="inicio">
+              <button type="button" class="btn btn-success"><a href="lugares.php"><h4>Lugares
+              </h4></a></button>
+        </div>
+        <div class="col-md-3" id="inicio">
+              <button type="button" class="btn btn-success"><a href="missitios.php"><h4>Mis sitios
+              </h4></a></button>
+        </div>
+        <div class="col-md-3" id="inicio">
+              <button type="button" class="btn btn-success"><a href="contactanos.php"><h4>Contactanos
+              </h4></a></button>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-12" id="divportada">
+          <img id="portada" src="../../img/portada.png"  >
+        </div>
       </div>
+    </div>
   </body>
 </html>
