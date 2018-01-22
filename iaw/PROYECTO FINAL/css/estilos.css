@@ -1,27 +1,30 @@
 #logo{
   background-color: black;
   color: white;
-  border: white 5px solid;
+  border: #7821a9 2px solid;
 }
 
 body{
-  background-color: black;
+  background-image: url(../img/fondo.jpg)
 }
 #encabezado{
   margin-top: 2%;
 }
 #inicio{
-  border: white 5px solid;
-  background-color: blue;
+  border: #7821a9 2px solid;
+  background-color: #36a921;
   text-align: center;
-  align-items: center;
+}
+#item{
+  margin-top: 6%;
 }
 
 #nusu{
   color: white;
+  margin-top: 12%;
 }
 #boton{
-  height: 20%;
+  margin-top: 20%;
 }
 #portada{
   height: 150%;
@@ -29,4 +32,10 @@ body{
 #divportada{
   align-items: center;
   margin-left: 7%;
+}
+#login{
+  background-color: blue;
+}
+#menu{
+  height: 70px;
 }

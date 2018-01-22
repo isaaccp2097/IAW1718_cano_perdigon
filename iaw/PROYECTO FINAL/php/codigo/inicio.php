@@ -28,29 +28,29 @@
 
 
         <div class="col-md-3" id="inicio">
-            <td><button type="button" class="btn btn-success"><a href="registrarse.php">
-            SING IN</a></button></td>
-            <td><a href="login.php"><button type="button" class="btn btn-success" >
+            <td><a href="registrarse.php"><button type="button" class="btn btn-danger" id='boton'>
+            SING IN</button></a></td>
+            <td><a href="login.php"><button type="button" class="btn btn-danger" id='boton'>
             LOG IN</button></a></td>
         </div>
 
       </div>
       <div class="row" id="menu">
         <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="mapa.php"><h4>Mapa
-              </h4></a></button>
+              <a href="mapa.php"><button type="button" id="item" class="btn btn-warning">Mapa
+              </button></a>
         </div>
         <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="lugares.php"><h4>Lugares
-              </h4></a></button>
+              <a href="lugares.php"><button type="button" id="item" class="btn btn-warning">Lugares
+              </button></a>
         </div>
         <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="missitios.php"><h4>Mis sitios
-              </h4></a></button>
+              <a href="missitios.php"><button type="button" id="item" class="btn btn-warning">Mis sitios
+              </button></a>
         </div>
         <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="contactanos.php"><h4>Contactanos
-              </h4></a></button>
+              <a href="contactanos.php"><button type="button" id="item" class="btn btn-warning">Contactanos
+              </button></a>
         </div>
       </div>
       <div class="row">
