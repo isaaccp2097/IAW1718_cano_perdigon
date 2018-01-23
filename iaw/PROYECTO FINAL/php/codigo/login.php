@@ -11,48 +11,7 @@
 </head>
   <body>
      <div class="container">
-      <div class="row" id="encabezado">
-        <div class="col-md-4" id="logo">
-            <a href="inicio.php"><img src="../../img/prueba1.png" class="img-fluid" alt="Responsive image"></a>
-        </div>
-        <div class="col-md-5" id="inicio">
-                <?php
-                if (isset($_SESSION["user"])) {
-                echo "<h4 id='nusu'>$_SESSION[user]</h4>";
-              } else {
-                session_destroy();
-                echo "<h4 id='nusu'>No ha iniciado sesion</h4>";
-              }
-              ?>
-        </div>
-
-
-        <div class="col-md-3" id="inicio">
-            <td><button type="button" class="btn btn-success"><a href="registrarse.php">
-            SING IN</a></button></td>
-            <td><a href="login.php"><button type="button" class="btn btn-success" >
-            LOG IN</button></a></td>
-        </div>
-
-      </div>
-      <div class="row" id="menu">
-        <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="mapa.php"><h4>Mapa
-              </h4></a></button>
-        </div>
-        <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="lugares.php"><h4>Lugares
-              </h4></a></button>
-        </div>
-        <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="missitios.php"><h4>Mis sitios
-              </h4></a></button>
-        </div>
-        <div class="col-md-3" id="inicio">
-              <button type="button" class="btn btn-success"><a href="contactanos.php"><h4>Contactanos
-              </h4></a></button>
-        </div>
-      </div>
+       <?php include("cabecera.php"); ?>
 
       <div class="row" id="login">
         <div class="col-md-3">
@@ -78,7 +37,7 @@
         if (isset($_POST["nusu"])) {
 
 
-          $connection = new mysqli("192.168.100.155", "root", "Admin2015", "hea", 3316);
+          $connection = new mysqli("localhost", "root", "Admin2015", "hea", 3316);
 
 
           if ($connection->connect_errno) {
@@ -91,18 +50,26 @@
           nusu='".$_POST["nusu"]."' and contrasena=md5('".$_POST["contrasena"]."');";
 
 
-
           if ($result = $connection->query($consulta)) {
 
 
               if ($result->num_rows===0) {
-                echo "USUARIO INCORRECTO";
+                echo "LOGIN INVALIDO";
               } else {
+                $obj = $result->fetch_object();
+                $tipo=$obj->tipo;
 
                 $_SESSION["user"]=$_POST["nusu"];
                 $_SESSION["language"]="es";
-                echo "login correcto";
-                header("Location: inicio.php");
+                $_SESSION["tipo"]=$tipo;
+
+                if ($tipo=='administrador') {
+                  header("Location: ../admin/admin.php");
+                }
+                else {
+                    header("Location: inicio.php");
+                }
+
               }
 
           } else {
