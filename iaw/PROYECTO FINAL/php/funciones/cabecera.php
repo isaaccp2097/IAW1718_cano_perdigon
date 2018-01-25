@@ -14,7 +14,7 @@
 
 
   <div class="col-md-3" id="inicio">
-      <td><a href="registrarse.php"><button type="button" class="btn btn-danger" id='boton'>
+      <td><a href="registro.php"><button type="button" class="btn btn-danger" id='boton'>
       SING IN</button></a></td>
       <td><a href="login.php"><button type="button" class="btn btn-danger" id='boton'>
       LOG IN</button></a></td>
